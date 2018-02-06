@@ -21,7 +21,6 @@
               </div>
               <btn id="js_edit_{{$task->id}}" data-task_id="{{$task->id}}" class="btn btn-outline-default btn-round changeblue js_edit_task"><i class="fa fa-cog"></i> Edit</btn>
               <btn id="js_remove_{{$task->id}}" data-task_id="{{$task->id}}" class="btn btn-outline-default btn-round changered js_remove_task"><i class="fa fa-minus"></i> Delete</btn>
-              <hr />
             @endforeach
 
          </div>

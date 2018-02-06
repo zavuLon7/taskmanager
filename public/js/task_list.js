@@ -23,7 +23,7 @@ $(document).ready(function(){
             success: function(json)
             {
               if(json.status == 200){
-                $('#js_task_list').append(`<div class="col-md-8 text-left">
+                $('#js_task_list').append(`<div class="col-md-8 text-left" id="js_div_text_block_`+json.data.id+`">
                    <div id="js_div_text_`+json.data.id+`" class="task-text"> `+json.data.task+` </div>
                 </div>
                 <btn id="js_edit_`+json.data.id+`" data-task_id="`+json.data.id+`" class="btn btn-outline-default btn-round changeblue js_edit_task"><i class="fa fa-cog"></i> Edit</btn>
@@ -43,7 +43,7 @@ $(document).ready(function(){
     var task_id = $(this).data('task_id');
     var task_text = $('#js_div_text_'+task_id).text();
     $('#js_div_text_'+task_id).html(`<textarea id="textarea_task_`+task_id+`" name="edit_task" class="col-md-12 textarea-style" rows="3" >`+task_text+`</textarea>`)
-    $(this).replaceWith(`<btn data-task_id="`+task_id+`" class="btn btn-outline-default btn-round changeblue js_save_edit_task"><i class="fa fa-check"></i> Save</btn>`);
+    $(this).replaceWith(`<btn id="js_save_edit_`+task_id+`" data-task_id="`+task_id+`" class="btn btn-outline-default btn-round changeblue js_save_edit_task"><i class="fa fa-check"></i> Save</btn>`);
     $('.js_save_edit_task').css('background-color','#b8f2f5')
   });
 
@@ -90,6 +90,8 @@ $(document).ready(function(){
               $('#js_div_text_block_'+json.data.id).remove();
               $('#js_edit_'+json.data.id).remove();
               $('#js_remove_'+json.data.id).remove();
+              $('#js_save_edit_'+json.data.id).remove();
+              $('#textarea_task_'+json.data.id).remove();
             }
           },
       })
